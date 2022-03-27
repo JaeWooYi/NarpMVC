@@ -2,10 +2,12 @@ package kr.web.controller;
 //JavaEE환경 -> 기본프로그램 : Servlet의 골격 -> 쓰려면 상속을 받아야한다.
 import java.io.*;
 import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import kr.web.util.MyUtil;
 
+@WebServlet("/hs.do")	// web.xml에 쓰는거보다 어노테이션이 훨씬 편하지? (web.xml에 해당내용 주석처리)
 public class HelloServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
