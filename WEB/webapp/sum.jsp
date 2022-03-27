@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="kr.web.util.MyUtil"%>
 <%
-	int sum = 0;
-for (int i = 0; i < 11; i++) {
-	sum += i;
-}
+MyUtil myUtil = new MyUtil();
+int sum = myUtil.hap();
 %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +15,7 @@ for (int i = 0; i < 11; i++) {
 
 	<table border="1">
 		<tr>
-			<td>1 ~ 10 까지의 총합은?</td>
+			<td>1 ~ 100 까지의 총합은?</td>
 			<td><%=sum%></td>
 		</tr>
 </body>
