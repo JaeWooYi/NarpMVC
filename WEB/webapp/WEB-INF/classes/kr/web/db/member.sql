@@ -9,5 +9,17 @@ email varchar(30) not null,
 phone varchar(30) not null
 );
 
+-- SQL(CRUD), JDBC
+-- select(검색)
 select * from member;
-insert into member(id, pass, name, age, email, phone) values('admin', 'admin', '관리자', 30, 'admin@admin.com', '02-0000-0000');
+
+-- insert(저장)
+insert into member(id, pass, name, age, email, phone) values('admin', 'admin', 'YJW', 30, 'admin@admin.com', '02-0000-0000');
+
+-- ubdate(수정)
+update member set age = 29, phone = '010-111-1111' where id='admin';
+
+-- delete(삭제)
+delete from member;
+-- or
+delete frml member where id="admin";
