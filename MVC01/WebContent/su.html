@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form action="calc.do" method="post"> <!-- 폼안에 메서드 아무것도 안쓰면 디폴트로 겟방식이 된다 -->
+	<table class="table table-bordered">
+		<tr>
+			<td>num1</td>
+			<!-- name="su1" : 파라미터 네임을 정해줘야 전송 가능 -->
+			<td><input type="text" name="su1" /></td>
+		</tr>
+		<tr>
+			<td>num2</td>
+			<td><input type="text" name="su2" /></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<input type="submit" value="전송" class="btn btn-primary"/>
+				<input type="reset" value="cancel" class="btn btn-warning" />
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
