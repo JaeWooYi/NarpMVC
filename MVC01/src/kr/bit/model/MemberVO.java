@@ -68,10 +68,7 @@ public class MemberVO {
 		this.phone = phone;
 	}
 	
-	
-	
 	public MemberVO(int num, String id, String pass, String name, int age, String email, String phone) {
-		super();
 		this.num = num;
 		this.id = id;
 		this.pass = pass;
@@ -81,7 +78,7 @@ public class MemberVO {
 		this.phone = phone;
 	}
 	
-	//
+	// 디버깅 해보려고 만들어 논거
 	@Override
 	public String toString() {
 		return "MemberVO [num=" + num + ", id=" + id + ", pass=" + pass + ", name=" + name + ", age=" + age + ", email="
