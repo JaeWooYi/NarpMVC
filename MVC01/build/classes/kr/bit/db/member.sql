@@ -6,7 +6,8 @@ pass varchar(20) not null,
 name varchar(30) not null,
 age int not null,
 email varchar(30) not null,
-phone varchar(30) not null
+phone varchar(30) not null,
+unique key(id)
 );
 
 -- SQL(CRUD), JDBC
@@ -18,6 +19,8 @@ insert into member(id, pass, name, age, email, phone) values('admin', 'admin', '
 
 -- ubdate(수정)
 update member set age = 29, phone = '010-111-1111' where id='admin';
+
+drop table member;
 
 -- delete(삭제)
 delete from member;
