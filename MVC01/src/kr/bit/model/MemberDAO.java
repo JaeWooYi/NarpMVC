@@ -111,6 +111,51 @@ public class MemberDAO {
 		return list;
 	}
 	
+	// 삭제메서드 
+	public int memberDelete(int num) {
+		String SQL = "delete from member where num=?";
+		getConnect();
+		int cnt = -1;
+		try {
+			ps=conn.prepareStatement(SQL);
+			ps.setInt(1, num);
+			cnt=ps.executeUpdate();	// 1 or 0
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return cnt;
+	}
+	
+	// 회원정보가져오기(memberContent)
+	public MemberVO memberContent(int num) {
+		String SQL = "select * from member where num=?";
+		getConnect();
+		MemberVO memberVO = null;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				// 회원 한명의 정보를 가져와서 -> 묶기만 하면된다(VO)
+				num = rs.getInt("num");
+				String id = rs.getString("id");
+				String pass = rs.getString("pass");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				String email = rs.getString("email");
+				String phone = rs.getString("phone");
+				memberVO = new MemberVO(num, id, pass, name, age, email, phone);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return memberVO;
+	}
+	
 	
 	
 }

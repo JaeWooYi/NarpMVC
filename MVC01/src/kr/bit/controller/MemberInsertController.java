@@ -53,6 +53,9 @@ public class MemberInsertController extends HttpServlet {
 		if(cnt > 0) {
 			// 가입 성공
 			out.println("Insert Success");
+			
+			// 여기까지 했으면 바로 회원리스트 가게 해보자 -> /memberList.do" 이 요청으로 다시 가야겠지?
+			response.sendRedirect("/MVC01/memberList.do");
 		}else {
 			// 가입 실패 -> 예외를 만들어서 톰캣 WAS에게 던지자.
 			throw new ServletException("Not Insert");
