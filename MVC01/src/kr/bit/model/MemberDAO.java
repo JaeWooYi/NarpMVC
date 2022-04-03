@@ -156,6 +156,24 @@ public class MemberDAO {
 		return memberVO;
 	}
 	
+	// UPDATE 메서드 만들어보자
+	public int memberUpdatd(MemberVO memberVO) {
+		String SQL = "UPDATE member set age=?, email=?, phone=? where num=?";
+		getConnect();
+		int cnt = -1;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ps.setInt(1, memberVO.getAge());
+			ps.setString(2, memberVO.getEmail());
+			ps.setString(3, memberVO.getPhone());
+			ps.setInt(4, memberVO.getNum()); 
+			cnt = ps.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}return cnt;
+	}
 	
 	
 }
