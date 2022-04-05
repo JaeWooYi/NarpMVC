@@ -16,25 +16,24 @@
 <input type="checkbox" value="test" /> 
 <input type="checkbox" value="test" />
 <input type="checkbox" value="test" />
-
-<table border="1">
+<table id='TestTable' border="1">
 <th>xxx</th>
 <th>yyy</th>
 <th>zzz</th>
 <tr>
-<td>안녕</td>
-<td>안녕2</td>
-<td>안녕3</td>
+<td align='center'>안녕</td>
+<td align='center'>안녕2</td>
+<td align='center'>안녕3</td>
 </tr>
 <tr>
-<td>안녕4</td>
-<td>안녕5</td>
-<td>안녕6</td>
+<td align='center'>안녕4</td>
+<td align='center'>안녕5</td>
+<td align='center'>안녕6</td>
 </tr>
 <tr>
-<td>안녕7</td>
-<td>안녕8</td>
-<td>안녕9</td>
+<td align='center'>안녕7</td>
+<td align='center'>안녕8</td>
+<td align='center'>안녕9</td>
 </tr>
 </table>
 </div>
