@@ -6,6 +6,6 @@ public class MyCalc {
 		for(int i = su1; i <= su2; i++) {
 			sum += i;
 		}
-		return sum;
+		return sum;	
 	}
 }
