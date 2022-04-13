@@ -84,7 +84,7 @@ public class MemberContentController extends HttpServlet {
 		out.println("<td colspan='2' align='center'>");
 		out.println("<input type='submit' value='수정하기' class='btn btn-primary'/>");
 		out.println("<input type='reset' value='취소' class='btn btn-warning'/>");
-		out.println("<a href='/MVC01/memberList.do'>리스트 되돌아가기</a>");
+		out.println("<a href='/MVC01/memberList.do'>리스트로</a>");
 		out.println("</td>");
 		out.println("</tr>");
 		

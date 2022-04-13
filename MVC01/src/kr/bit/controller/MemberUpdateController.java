@@ -34,7 +34,7 @@ public class MemberUpdateController extends HttpServlet {
 		
 		// DAO모델을 연동해서 업데이트를 시켜보자
 		MemberDAO memberDAO = new MemberDAO();
-		int cnt = memberDAO.memberUpdatd(memberVO);
+		int cnt = memberDAO.memberUpdate(memberVO);
 		
 		// 성공, 실패 테스트
 		PrintWriter out = response.getWriter();

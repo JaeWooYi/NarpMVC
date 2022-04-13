@@ -157,7 +157,7 @@ public class MemberDAO {
 	}
 	
 	// UPDATE 메서드 만들어보자
-	public int memberUpdatd(MemberVO memberVO) {
+	public int memberUpdate(MemberVO memberVO) {
 		String SQL = "UPDATE member set age=?, email=?, phone=? where num=?";
 		getConnect();
 		int cnt = -1;
