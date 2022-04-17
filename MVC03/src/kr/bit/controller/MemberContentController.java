@@ -27,4 +27,5 @@ public class MemberContentController extends HttpServlet {
 		RequestDispatcher rd=request.getRequestDispatcher("member/memberContent.jsp");
 		rd.forward(request, response); //-----------------------------------▲
 	}
+	//
 }
