@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="kr.bit.model.*" %>    
 <%
-  int num=Integer.parseInt(request.getParameter("num"));
-  MemberDAO dao=new MemberDAO();
-  MemberVO vo=dao.memberContent(num);
-%>    
+    	int num=Integer.parseInt(request.getParameter("num"));
+      MemberDAO dao=new MemberDAO();
+      MemberVO vo=dao.memberContent(num);
+    %>    
 <!DOCTYPE html>
 <html>
 <head>

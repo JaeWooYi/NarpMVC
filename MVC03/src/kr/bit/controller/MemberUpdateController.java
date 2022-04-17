@@ -11,41 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.bit.model.MemberDAO;
 import kr.bit.model.MemberVO;
-
 @WebServlet("/memberUpdate.do")
-public class MemberUpdateController extends HttpServlet {
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		// 한글처리
+public class MemberUpdateController extends HttpServlet {	
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
+			                                   throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		//파라메터 수집(VO)
+		int num=Integer.parseInt(request.getParameter("num"));
+		int age=Integer.parseInt(request.getParameter("age"));
+		String email=request.getParameter("email");
+		String phone=request.getParameter("phone");
 		
-		// 클라이언트에게 요청을 받아서 파라미터를 수집해야한다.
-		int num = Integer.parseInt(request.getParameter("num"));
-		int age = Integer.parseInt(request.getParameter("age"));
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
+		MemberVO vo=new MemberVO();
+		vo.setNum(num);
+		vo.setAge(age);
+		vo.setEmail(email);
+		vo.setPhone(phone);
 		
-		// 위 수집한거 VO에 묶어주기
-		MemberVO memberVO = new MemberVO();
-		memberVO.setNum(num);
-		memberVO.setAge(age);
-		memberVO.setEmail(email);
-		memberVO.setPhone(phone);
-		
-		// DAO모델을 연동해서 업데이트를 시켜보자
-		MemberDAO memberDAO = new MemberDAO();
-		int cnt = memberDAO.memberUpdate(memberVO);
-		
-		// 성공, 실패 테스트
-		PrintWriter out = response.getWriter();
-		if(cnt > 0) {
-			// Update 성공			
-			out.println("Update Success");
-			response.sendRedirect("/MVC01/memberList.do");
-		}else {
-			// 가입 실패 -> 예외를 만들어서 톰캣 WAS에게 던지자.
-			throw new ServletException("Not Update");
-		}
+		MemberDAO dao=new MemberDAO();
+		int cnt=dao.memberUpdate(vo);
+		if(cnt>0) {
+		    	// 가입성공		        
+		    	response.sendRedirect("/MVC03/memberList.do");
+		 }else {
+		    	// 가입실패-> 예외객체를 만들어서  WAS에게 던지자.
+		    	throw new ServletException("not update");	    	
+		 }	
 	}
-
 }
