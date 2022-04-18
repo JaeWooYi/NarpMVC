@@ -37,7 +37,7 @@ ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
   <% for(MemberVO vo : list){ %>
     	  <tr>
     	    <td><%=vo.getNum()%></td>
-    	    <td><a href="memberContent.jsp?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
+    	    <td><a href="memberContent.do?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
     	    <td><%=vo.getPass()%></td>
     	    <td><%=vo.getName()%></td>
     	    <td><%=vo.getAge()%></td>
