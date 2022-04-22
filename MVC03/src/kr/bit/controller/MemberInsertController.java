@@ -25,18 +25,18 @@ public class MemberInsertController extends HttpServlet {
 		String phone=request.getParameter("phone");
 		//파라메터수집(VO)
 		//MemberVO vo=new MemberVO(id, pass, name, age, email, phone);
-		MemberVO vo=new MemberVO();
-		vo.setId(id);
-		vo.setPass(pass);
-		vo.setName(name);
-		vo.setAge(age);
-		vo.setEmail(email);
-		vo.setPhone(phone);
+		MemberVO paramVO=new MemberVO();
+		paramVO.setId(id);
+		paramVO.setPass(pass);
+		paramVO.setName(name);
+		paramVO.setAge(age);
+		paramVO.setEmail(email);
+		paramVO.setPhone(phone);
 		
 		//System.out.println(vo); // vo.toString()
 		// Model과 연동부분
 	    MemberDAO dao=new MemberDAO();
-	    int cnt=dao.memberInsert(vo);
+	    int cnt=dao.memberInsert(paramVO);
 	    //PrintWriter out=response.getWriter();
 	    if(cnt>0) {
 	    	// 가입성공

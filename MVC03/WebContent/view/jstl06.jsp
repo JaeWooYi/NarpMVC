@@ -9,7 +9,7 @@ list.add("Python");
 list.add("Javascript");
 list.add("c++");
 list.add("c#");
-request.setAttribute("list", list);	// 객체 바인
+request.setAttribute("list", list);	// 객체 바인딩
 %>
 <!DOCTYPE html>
 <html>

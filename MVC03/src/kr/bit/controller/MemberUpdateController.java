@@ -22,14 +22,14 @@ public class MemberUpdateController extends HttpServlet {
 		String email=request.getParameter("email");
 		String phone=request.getParameter("phone");
 		
-		MemberVO vo=new MemberVO();
-		vo.setNum(num);
-		vo.setAge(age);
-		vo.setEmail(email);
-		vo.setPhone(phone);
+		MemberVO paramVO=new MemberVO();
+		paramVO.setNum(num);
+		paramVO.setAge(age);
+		paramVO.setEmail(email);
+		paramVO.setPhone(phone);
 		
 		MemberDAO dao=new MemberDAO();
-		int cnt=dao.memberUpdate(vo);
+		int cnt=dao.memberUpdate(paramVO);
 		if(cnt>0) {
 		    	// 가입성공		        
 		    	response.sendRedirect("/MVC03/memberList.do");

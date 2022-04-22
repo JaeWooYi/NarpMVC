@@ -2,10 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="kr.bit.model.*" %>    
 <%@ page import="java.util.*" %>
-<!-- getAttribute로 빼내야겠지?(controller에 setAttribute했으니까) -->
-<%
-ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
-%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +20,7 @@ ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
 </script>
 </head>
 <body>
-[MVC03 예제 = Controller + View]<br>
+[MVC03 예제 = Controller + View(JSTL + EL)]<br>
 <table class="table table-bordered">
   <tr>
     <td>번호</td>
@@ -30,22 +28,22 @@ ArrayList<MemberVO> list = (ArrayList<MemberVO>)request.getAttribute("list");
     <td>비밀번호</td>
     <td>이름</td>
     <td>나이</td>
-    <td>이메일</td>
+    <td>이메일</td> 
     <td>전화번호</td>
     <td>삭제</td>
   </tr>
-  <% for(MemberVO vo : list){ %>
-    	  <tr>
-    	    <td><%=vo.getNum()%></td>
-    	    <td><a href="memberContent.do?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
-    	    <td><%=vo.getPass()%></td>
-    	    <td><%=vo.getName()%></td>
-    	    <td><%=vo.getAge()%></td>
-    	    <td><%=vo.getEmail()%></td>
-    	    <td><%=vo.getPhone()%></td>
-    	    <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(<%=vo.getNum()%>)"></td>
-    	  </tr>    	 
-  <% } %>
+  <c:forEach items="${list}" var="paramVO">
+    	 <tr>
+    	    <td>${paramVO.num}	</td>
+    	    <td><a href="memberContent.do?num=${paramVO.num}">${paramVO.id}</a></td>
+    	    <td>${paramVO.pass}</td>
+    	    <td>${paramVO.name}</td>
+    	    <td>${paramVO.age}</td>
+    	    <td>${paramVO.email}</td>
+    	    <td>${paramVO.phone}</td>
+    	    <td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${paramVO.num})"></td>
+		</tr>    	      	 
+  </c:forEach>
   <tr>
   <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='member/memberRegister.html'"/></td>
   </tr>

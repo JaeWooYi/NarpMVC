@@ -4,7 +4,7 @@
 <%@ page import="java.util.*" %>
 <%
 	MemberDAO dao=new MemberDAO();
-  ArrayList<MemberVO> list=dao.memberList();
+ 	ArrayList<MemberVO> list=dao.memberList();
 %>    
 <!DOCTYPE html>
 <html>

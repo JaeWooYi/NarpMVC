@@ -20,10 +20,10 @@ public class MemberContentController extends HttpServlet {
 		int num=Integer.parseInt(request.getParameter("num"));
 		
 		MemberDAO dao=new MemberDAO();
-		MemberVO vo=dao.memberContent(num);
+		MemberVO paramVO=dao.memberContent(num);
 		
 		// 객체바인딩
-		request.setAttribute("vo", vo);
+		request.setAttribute("paramVO", paramVO);
 		RequestDispatcher rd=request.getRequestDispatcher("member/memberContent.jsp");
 		rd.forward(request, response); //-----------------------------------▲
 	}
