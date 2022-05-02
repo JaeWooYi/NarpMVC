@@ -15,7 +15,7 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
   function deleteFn(num){
-	  location.href="/MVC03/memberDelete.do?num="+num; // ?num=12
+	  location.href="/MVC04/memberDelete.do?num="+num; // ?num=12
   }
 </script>
 </head>

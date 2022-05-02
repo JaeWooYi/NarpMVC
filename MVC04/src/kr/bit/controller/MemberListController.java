@@ -16,7 +16,7 @@ public class MemberListController implements Controller{
 	// public String requestHandler -> String : 다음페이지의 정보를 리턴한다
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// POJO가 해야 할 일에 대한 범
+
 		// 1. MODEL연동
 		MemberDAO dao = new MemberDAO();
 		List<MemberVO> list = dao.memberList();
