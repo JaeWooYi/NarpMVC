@@ -20,7 +20,7 @@
 </script>
 </head>
 <body>
-[MVC03 예제 = Controller + View(JSTL + EL)]<br>
+[MVC04 예제 = FrontController + POJO]<br>
 <table class="table table-bordered">
   <tr>
     <td>번호</td>
