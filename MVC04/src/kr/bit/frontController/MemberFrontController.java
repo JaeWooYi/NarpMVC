@@ -39,45 +39,54 @@ public class MemberFrontController extends HttpServlet {
 		// 3. 요청에 따른 분기작업(if~else if)
 		Controller controller = null;
 		String nextPage = null;
+		
+		// 요 if 부분들을 handler mapping이라고 부른다
 		if(command.equals("/memberList.do")) {
 			
 			controller = new MemberListController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);	// 포워딩
-			rd.forward(request, response);
+			
 			
 		}else if(command.equals("/memberInsert.do")) {
 			
 			controller = new MemberInsertController();
 			controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
+			
 			
 		}else if(command.equals("/memberRegister.do")) {
 			
 			controller = new MemberRegisterController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher(nextPage);	// 포워딩
-			rd.forward(request, response);
+			
 			
 		}else if(command.equals("/memberContent.do")) {
 			
 			controller = new MemberContentController();
 			nextPage = controller.requestHandler(request, response);
-			RequestDispatcher rd=request.getRequestDispatcher(nextPage);
-			rd.forward(request, response); //-----------------------------------▲
+			
 			
 		}else if(command.equals("/memberUpdate.do")) {
 			
 			controller = new MemberUpdateController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
+			
 			
 		}else if(command.equals("/memberDelete.do")) {
 			
 			controller = new MemberDeleteController();
 			nextPage = controller.requestHandler(request, response);
-			response.sendRedirect(nextPage);
 			
+			
+		}
+		
+		// 포워딩과 리다이렉트를 구분
+		if(nextPage != null) {
+			if(nextPage.indexOf("redirect:")!= -1) {	// 있다면 
+				response.sendRedirect(nextPage.split(":")[1]); // redirect
+			}else {	// 없다면 
+				RequestDispatcher rd = request.getRequestDispatcher(nextPage); // forwording
+				rd.forward(request, response);
+			}
 		}
 	}
 

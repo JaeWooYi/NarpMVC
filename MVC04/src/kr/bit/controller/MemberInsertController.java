@@ -40,7 +40,7 @@ public class MemberInsertController implements Controller {
 		if (cnt > 0) {
 			// 가입성공
 			// out.println("insert success"); // 다시 회원리스트 보기로 가야된다.(/MVC04/memberList.do)
-			nextPage = "/MVC04/memberList.do";
+			nextPage = "redirect:/MVC04/memberList.do";
 		} else {
 			// 가입실패-> 예외객체를 만들어서 WAS에게 던지자.
 			throw new ServletException("not insert");
