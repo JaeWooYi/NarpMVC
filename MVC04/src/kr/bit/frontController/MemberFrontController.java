@@ -24,7 +24,7 @@ public class MemberFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		// 한글깨짐 방지
-		request.setCharacterEncoding("euc-kr");
+		request.setCharacterEncoding("utf-8");
 		
 		// 1. 클라이언트가 어떤 요청을 했는지 파악하기
 		String url = request.getRequestURI();
@@ -50,7 +50,7 @@ public class MemberFrontController extends HttpServlet {
 			if(nextPage.indexOf("redirect:")!= -1) {	// 있다면 
 				response.sendRedirect(nextPage.split(":")[1]); // redirect
 			}else {	// 없다면 
-				RequestDispatcher rd = request.getRequestDispatcher(nextPage); // forwording
+				RequestDispatcher rd = request.getRequestDispatcher(ViewResolver.makeView(nextPage)); // forwording
 				rd.forward(request, response);
 			}
 		}

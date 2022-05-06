@@ -24,7 +24,8 @@ public class MemberContentController implements Controller{
 		// 객체바인딩
 		request.setAttribute("paramVO", paramVO);
 		
-		return "/WEB-INF/member/memberContent.jsp";
+		//return "/WEB-INF/member/memberContent.jsp";
+		return "memberContent";
 	}
 
 }

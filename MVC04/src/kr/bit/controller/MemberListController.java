@@ -26,7 +26,8 @@ public class MemberListController implements Controller{
 		
 		// 3. View page의 정보
 		// 다음페이지는 
-		return "/WEB-INF/member/memberList.jsp";	// requestHandler의 type이 void가 아니라 String으로 가야겠지?
+//		return "/WEB-INF/member/memberList.jsp";	// requestHandler의 type이 void가 아니라 String으로 가야겠지?
+		return "memberList";	// requestHandler의 type이 void가 아니라 String으로 가야겠지?
 	}
 
 }
