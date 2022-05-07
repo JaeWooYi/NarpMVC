@@ -3,7 +3,7 @@
 <%@ page import="kr.bit.model.*" %>    
 <%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<c:set var = "ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
   function deleteFn(num){
-	  location.href="/MVC04/memberDelete.do?num="+num; // ?num=12
+	  location.href="${ctx}/memberDelete.do?num="+num; // ?num=12
   }
 </script>
 </head>
@@ -35,7 +35,7 @@
   <c:forEach items="${list}" var="paramVO">
     	 <tr>
     	    <td>${paramVO.num}	</td>
-    	    <td><a href="memberContent.do?num=${paramVO.num}">${paramVO.id}</a></td>
+    	    <td><a href="${ctx}/memberContent.do?num=${paramVO.num}">${paramVO.id}</a></td>
     	    <td>${paramVO.pass}</td>
     	    <td>${paramVO.name}</td>
     	    <td>${paramVO.age}</td>
@@ -45,7 +45,7 @@
 		</tr>    	      	 
   </c:forEach>
   <tr>
-  <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='/MVC04/memberRegister.do'"/></td>
+  <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'"/></td>
   </tr>
 </table>
 </body>
