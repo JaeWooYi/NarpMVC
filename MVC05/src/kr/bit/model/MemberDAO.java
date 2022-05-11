@@ -41,4 +41,31 @@ public class MemberDAO {
 		session.close();
 		return cnt;
 	}
+	
+	// 회원삭제 기능
+	public int memberDelete(int num) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.delete("memberDelete",num);
+		session.commit();
+		session.close();
+		return cnt;
+	}
+	
+	// 회원상세 보기 기능
+	public MemberVO memberContent(int num) {
+		SqlSession session = sqlSessionFactory.openSession();
+		MemberVO vo = session.selectOne("memberContent", num);
+		session.commit();
+		session.close();
+		return vo;
+	}
+	
+	// 회원정보 수정하기 기능
+	public int memberUpdate(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberUpdate", vo);
+		session.commit();
+		session.close();
+		return cnt;
+	}
 }
