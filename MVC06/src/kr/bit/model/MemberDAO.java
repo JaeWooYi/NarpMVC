@@ -68,4 +68,12 @@ public class MemberDAO {
 		session.close();
 		return cnt;
 	}
+	
+	// 회원로그인
+	public String memberLogin(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		String user_name = session.selectOne("memberLogin", vo);
+		session.close();
+		return user_name;
+	}
 }

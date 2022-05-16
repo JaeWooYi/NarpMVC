@@ -14,7 +14,7 @@ public class MemberDeleteController implements Controller{
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String ctx=request.getContextPath(); // /MVC04
+		String ctx=request.getContextPath(); // /MVC06
 		
 		int num=Integer.parseInt(request.getParameter("num"));
 		
