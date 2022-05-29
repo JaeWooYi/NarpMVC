@@ -25,14 +25,14 @@
 <body>
 
 <div class="container">
-	<h2>회원관리 시스템</h2>	
+	<h2>상세화면</h2>	
   <div class="panel panel-default">
     <div class="panel-heading">
     	<c:if test="${sessionScope.userId != null && sessionScope.userId != ''}">
-			<h3>${sessionScope.userName}님 환영합니다.</h3>
+			<label>${sessionScope.userName}님이 로그인 했습니다.</label>
 		</c:if>
 		<c:if test="${sessionScope.userId == null || sessionScope.userId == ''}">
-			<h3>안녕하십니까.</h3>
+			<label>안녕하십니까.</label>
 		</c:if>
     </div>
     
@@ -69,19 +69,19 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2">age : </label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="age" name="age" value="${vo.name}" />
+				<input type="text" class="form-control" id="age" name="age" value="${vo.name}" style="width: 10%" />
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="control-label col-sm-2">e-mail : </label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="email" name="email" value="${vo.email}" />
+				<input type="text" class="form-control" id="email" name="email" value="${vo.email}" style="width: 30%" />
 			</div>
 		</div> 
 		<div class="form-group">
 			<label class="control-label col-sm-2">phone : </label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="phone" name="phone" value="${vo.phone}" />
+				<input type="text" class="form-control" id="phone" name="phone" value="${vo.phone}" style="width: 30%" />
 			</div>
 		</div>
 		

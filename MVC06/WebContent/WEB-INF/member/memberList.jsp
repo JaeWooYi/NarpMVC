@@ -110,7 +110,7 @@
 								</tr>
 							</c:forEach>
 							<tr>
-								<td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'" /></td>
+								<td colspan="8" align="left"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'" /></td>
 							</tr>
 						</tbody>
 					</table>
