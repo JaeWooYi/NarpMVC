@@ -31,16 +31,19 @@
 	  $.ajax({
 		  url : "<c:url value='/memberDbcheck.do' />",
 		  type : "POST",
-		  success : dbCheck, 	// 여기 석세를 일반적으로 callback함수라고 함
-		  error : function(){alert("error");}
+		  data : {"id" : id},
+		  success : dbCheck, 	// 여기 석세스를 일반적으로 callback함수라고 함
+		  error : function(){ alert("error"); }
 	  });
   }
-  function dbCheck(data){
-	  if(data != "null"){
+  // response.getWriter().print(dbId);
+  function dbCheck(data){	// 여기서 Data가 YES인지 NO인지 둘중 하나가 들어가겠지?
+	  if(data != "NO"){
 		  alert("중복된 아이디 입니다");
-		  $("#id").val();
+		  $("#id").focus();
 	  }else{
 		  alert("사용 가능 아이디 입니다");
+		  $("#id").focus();
 	  }
   }
   </script>

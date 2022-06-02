@@ -82,7 +82,7 @@ public class MemberDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 		String dbId = session.selectOne("memberDbcheck", id);	// id가 넘어오던가 null이 넘어오던가	// null이 중복이야? 왜 씨이발? -> db에 일치하는 회원이 있으면 id가 넘어오는거니까 
 		String idDouble = "NO";	// 기본값은 중복이 안됐다는 의미로 일단 그냥 no라고 만들어봤어 
-		if(dbId != null) {	// null이 아니면 중복이 됬다는 소리겠지?
+		if(dbId!=null) {	// null이 아니면 중복이 됬다는 소리겠지?
 			idDouble = "YES";
 		}
 		return idDouble;	// YES -> 중복, NO -> 중복 아님
