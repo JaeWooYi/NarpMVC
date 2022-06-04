@@ -46,6 +46,61 @@
 	  console.log("fuck you");
 	  location.href = "<c:url value='/memberLogout.do'/>";
   }
+  function memberList() {
+	  /* var html = $("#collapse1 .panel-body").html();	// 왜 한칸 띄고 .찍어서 자식 부를까? 문법인가 -> 응 그렇대
+	  alert(html); */
+	  $.ajax({
+		  url : "<c:url value='/memberAjaxList.do' />",	// 서버로 요청 
+		  type : "get",
+		  dataType : "json",
+		  success : resultHtml,	// 회원리스트로 받기 (  [{},{},{},..,{}] 구조로 : json  )
+		  error : function() {
+			  error("error!!!");
+		  }
+	  });
+  }
+  
+  function resultHtml(data){
+	  
+	  var html = "<table class='table table-hober'>";
+	  html += "<tr>";
+	  html += "<th>번호</th>";
+	  html += "<th>아이디</th>";
+	  html += "<th>비밀번호</th>";
+	  html += "<th>이름</th>";
+	  html += "<th>나이</th>";
+	  html += "<th>이메일</th>";
+	  html += "<th>전화번호</th>";
+	  html += "<th>삭제</th>";
+	  html += "</tr>";
+	  // 여기서 반복문 처리 - [{},{},{},..,{}] 구조로 : json -> 날라온다했지 위에서?
+	  // jquery에서 반복문 함수야(each())
+	  $.each(data, function(index, obj){
+		  html += "<tr>";
+		  html += "<td>"+obj.num+"</td>";
+		  html += "<td>"+obj.id+"</td>";
+		  html += "<td>"+obj.pass+"</td>";
+		  html += "<td>"+obj.name+"</td>";
+		  html += "<td>"+obj.age+"</td>";
+		  html += "<td>"+obj.email+"</td>";
+		  html += "<td>"+obj.phone+"</td>";
+		  html += "<td><input type='button' value='삭제' class = 'btn btn-warning' onclick='delFn("+obj.num+")' /></td>";
+		  html += "</tr>";
+	  });
+	  html += "</table>";
+	  
+	  $("#collapse1 .panel-body").html(html);
+  }
+  
+  function delFn(num){
+	  $.ajax({
+		  url : "<c:url value='/memberAjaxDelete.do' />",
+		  type : "get",
+		  data : {"num" : num},
+		  success : memberList,
+		  error : function(){alert("error delete!");}
+	  });
+  }
 </script>
 </head>
 <body>
@@ -120,6 +175,21 @@
 			 회원관리 ERP SYSTEM(admin@kkk.com)
 			 </div>
 		</div>
+		
+		<div class="panel-group">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h4 class="panel-title">
+		        <a data-toggle="collapse" href="#collapse1" onclick="memberList()" >회원 리스트 보기</a>
+		      </h4>
+		    </div>
+		    <div id="collapse1" class="panel-collapse collapse">
+		      <div class="panel-body">Panel Body</div>
+		      <div class="panel-footer">Panel Footer</div>
+		    </div>
+		  </div>
+		</div>		
+		
 	</div>
 </body>
 </html>
