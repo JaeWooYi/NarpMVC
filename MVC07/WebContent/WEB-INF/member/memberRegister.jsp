@@ -57,14 +57,16 @@
 	  		processData : false,	// ajax로 파일 업로드할때는 processData, contentType 이 두개의 속성에 false값을 줘야 한다
 	  		contentType : false,
 	  		success : function(data) {	// 업로드된 실제 파일 이름을 전달 받기 
+	  			//alert(data);	// 아래 3줄 주석처리하고 이거 했었음 -> 왜냐? 테스트하려구 
 	  			$('#filename').val(data);
-	  			document.form1.action="<c:url value='/memberInsert.do' />";		// text데이터를 저장하는 부분  
-	  			document.form1.submit();
+	  			document.form1.action="<c:url value='/memberInsert.do' />?mode=fadd";		// text데이터를 저장하는 부분  
+	  			document.form1.submit();	// id, pass, name, age, email, phone, filename
 	  		},
 	  		error : function(){alert("Upload error")}
 	  	});
 	  }else{			// 파일이 첨부가 되지 않은 경우 
-		  
+		document.form1.action="<c:url value='/memberInsert.do' />?mode=add";		// text데이터를 저장하는 부분  
+		document.form1.submit();	// id, pass, name, age, email, phone -> 파일이 없는 경우에는 filename제외하고 넘어갈것이다 파라메타로		  
 	  }
   }
   </script>
@@ -85,7 +87,7 @@
     </div>
     
 	<div class="panel-body">
-		<form id="form1" name="form1" class="form-horizontal" action="" method="post">
+		<form id="form1" name="form1" class="form-horizontal" method="post">
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="id">ID : </label>
 		    <div class="col-sm-10">

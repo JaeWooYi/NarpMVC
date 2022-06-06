@@ -33,10 +33,19 @@ public class MemberDAO {
 		return list;
 	}
 	
-	// 회원가입 기능
+	// 회원가입 기능(업로드 없는 경우)
 	public int memberInsert(MemberVO vo){
 		SqlSession session = sqlSessionFactory.openSession();
 		int cnt = session.insert("memberInsert", vo);
+		session.commit();
+		session.close();
+		return cnt;
+	}
+	
+	// 회원가입 기능(업로드 있는 경우)
+	public int memberInsertFile(MemberVO vo){
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.insert("memberInsertFile", vo);
 		session.commit();
 		session.close();
 		return cnt;
