@@ -140,6 +140,7 @@
 								<th>나이</th>
 								<th>이메일</th>
 								<th>전화번호</th>
+								<th>이미지</th>
 								<th>삭제</th>
 							</tr>
 						</thead>
@@ -153,6 +154,12 @@
 									<td>${vo.age}</td>
 									<td>${vo.email}</td>
 									<td>${vo.phone}</td>
+									<td>
+										<c:if test="${vo.filename != null && vo.filename != ''}">
+											<%-- <img src="<c:out value='file_repo/${vo.filename}' />" width="60px" height="60px" > --%>
+											<img src="<c:out value='file_repo/${vo.filename}' />" width="60px" height="60px" >
+										</c:if>
+									</td>
 									
 									<c:if test = "${sessionScope.userId == vo.id}">
 									<td><input type="button" value="삭제" class="btn btn-warning" onclick="deleteFn(${vo.num})"></td>
