@@ -84,7 +84,15 @@
 				<input type="text" class="form-control" id="phone" name="phone" value="${vo.phone}" style="width: 30%" />
 			</div>
 		</div>
-		
+		<div class="form-group">
+			<label class="control-label col-sm-2">프사 : </label>
+			<div class="col-sm-10">
+				<input type="file" id="file" name="file"/>
+					<c:if test="${vo.filename != null && vo.filename != '' }">
+						<c:out value='${vo.filename}' />
+					</c:if>
+			</div>
+		</div>
 		</form>
 
 	</div>
