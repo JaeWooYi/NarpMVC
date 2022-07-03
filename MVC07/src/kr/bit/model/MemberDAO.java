@@ -105,4 +105,13 @@ public class MemberDAO {
 		session.close();
 		return cnt;
 	}
+	
+	// 회원 첨부파일 있는 경우 수
+	public int memberUpdateFile(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberUpdateFile", vo);
+		session.commit();
+		session.close();
+		return cnt;
+	}
 }

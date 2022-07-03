@@ -13,8 +13,27 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
 	function update() {
-		document.form1.action="<c:url value='/memberUpdate.do' />"
-		document.form1.submit();
+		if($("#file").val() != ''){	// 파일이 첨부가 된 경우 
+			var formData = new FormData();
+		  	formData.append("file", $("input[name=file]")[0].files[0]);
+		  	$.ajax({
+		  		url : "<c:url value='/fileAdd.do' />",
+		  		type : "post",
+		  		data : formData,
+		  		processData : false,	// ajax로 파일 업로드할때는 processData, contentType 이 두개의 속성에 false값을 줘야 한다
+		  		contentType : false,
+		  		success : function(data) {	// 업로드된 실제 파일 이름을 전달 받기 
+		  			//alert(data);	// 아래 3줄 주석처리하고 이거 했었음 -> 왜냐? 테스트하려구 
+		  			$('#filename').val(data);
+		  			document.form1.action="<c:url value='/memberUpdate.do' />?mode=fupdate";		// text데이터를 저장하는 부분  
+		  			document.form1.submit();	// num, age, email, phone, filename
+		  		},
+		  		error : function(){alert("Upload error")}
+		  	});
+		  }else{			// 파일이 첨부가 되지 않은 경우 
+			document.form1.action="<c:url value='/memberUpdate.do' />?mode=update";		// text데이터를 저장하는 부분  
+			document.form1.submit();	// num, age, email, phone -> 파일이 없는 경우에는 filename제외하고 넘어갈것이다 파라메타로		  
+		  }
 	}
 	
 	function frmReset() {
@@ -51,6 +70,7 @@
 	<form id="form1" name="form1" class="form-horizontal" method="post">
 	    
 	    <input type="hidden" name="num" value="${vo.num}" />
+	    <input type="hidden" name="filename" id="filename" value="${vo.num}" />
 	    
 		<div class="form-group">
 			<label class="control-label col-sm-2">번호 : </label>
