@@ -24,7 +24,7 @@ public class MemberDAO {
 		}
 	}
 	
-	// 회원전체 리스트 보기
+	// 회원전체 리스트 보기.
 	public List<MemberVO> memberList() {
 		// [Connection + Statement] -> sqlSession
 		SqlSession session = sqlSessionFactory.openSession();
@@ -33,7 +33,7 @@ public class MemberDAO {
 		return list;
 	}
 	
-	// 회원가입 기능
+	// 회원가입 기능.
 	public int memberInsert(MemberVO vo){
 		SqlSession session = sqlSessionFactory.openSession();
 		int cnt = session.insert("memberInsert", vo);
