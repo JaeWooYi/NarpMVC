@@ -9,20 +9,15 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+//@ -> 어노테이션(전처리) -> Spring Container에서 관리를 해준다.
+@Repository
 public class MemberDAO {
-	private static SqlSessionFactory sqlSessionFactory;	
 	
-	// static 블록 -> 초기화 블록 : 프로그램 실행시 딱 한번만 실행 되는 코드 영역 
-	static {
-		try {
-		String resource = "kr/bit/mybatis/config.xml";
-		InputStream inputStream = Resources.getResourceAsStream(resource);
-		sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+	@Autowired
+	private SqlSessionFactory sqlSessionFactory;
 	
 	// 회원전체 리스트 보기.
 	public List<MemberVO> memberList() {
