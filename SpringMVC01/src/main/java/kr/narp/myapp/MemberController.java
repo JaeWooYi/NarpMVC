@@ -15,7 +15,7 @@ import kr.bit.model.MemberVO;
 public class MemberController {
 	
 	@Autowired
-	private MemberDAO dao;
+	private MemberDAO dao;	// Dependency Injection
 	
 	@RequestMapping("/memberList.do")
 	public String memberList(Model model) {	// HttpServletRequest -> Model와 일맥 상통한다.
@@ -29,7 +29,11 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/memberInsert.do")
-	public String memberInsert() {
+	public String memberInsert(MemberVO vo) {	// 파라미터 수집(VO)
+		
+		// 인코딩 해줘야 한다.(한글깨짐 방지) - web.xml에 검색을 통해 해결! -- 주석 부분 : <!-- Character Encoding --> 
+		
+		int cnt = dao.memberInsert(vo);
 		
 		return "redirect:/memberList.do";
 	}
@@ -39,4 +43,32 @@ public class MemberController {
 		
 		return "memberRegister";
 	}
+	
+	@RequestMapping("/memberDelete.do")
+	public String memberDelete(int num) {	// 파라미터 수집 : num -> MemberVO vo로 해도 상관은 없다.
+		
+		int cnt = dao.memberDelete(num);
+		
+		return "redirect:/memberList.do";
+	}
+	
+	@RequestMapping("/memberContent.do")
+	public String memberContent(int num, Model model) {
+		
+		MemberVO vo = dao.memberContent(num);
+		
+		// 객체 바인딩
+		model.addAttribute("vo", vo);
+		
+		return "memberContent";
+	}
+	
+	@RequestMapping("/memberUpdate.do")
+	public String memberUpdate(MemberVO vo) {
+		
+		int cnt = dao.memberUpdate(vo);
+		
+		return "redirect:/memberList.do";
+	}
+	
 }
