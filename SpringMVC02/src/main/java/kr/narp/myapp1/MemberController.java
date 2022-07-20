@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.bit.mapper.MemberMapper;
 import kr.bit.model.MemberVO;
@@ -70,6 +71,15 @@ public class MemberController {
 		int cnt = memberMapper.memberUpdate(vo);
 		
 		return "redirect:/memberList.do";
+	}
+	
+	@RequestMapping("/memberAjaxList.do")
+	public @ResponseBody List<MemberVO> memberAjaxList() {
+		
+		List<MemberVO> list = memberMapper.memberList();
+		//$.ajax() -> callback 함수로 응답 -> JSON으로
+		
+		return list;	// Object -> JSON : @ResponseBody -> API : (jackson-databind / jackson-mapper-asl) 2개 필요함.
 	}
 	
 }

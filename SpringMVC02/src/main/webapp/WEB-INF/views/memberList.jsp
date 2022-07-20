@@ -17,13 +17,56 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 <script type="text/javascript">
+  
   function deleteFn(num){
 	  location.href="${ctx}/memberDelete.do?num="+num; // ?num=12
   }
+  
+  function btnClick(num){
+	  $.ajax({
+		 url : "<c:url value='/memberAjaxList.do'/>",
+		 type : "get",
+		 dataType : "json",
+		 success : resultHtml,
+		 error : function(){alert("error!!");}
+	  });
+  }
+  
+  function resultHtml(data){
+	  console.log(data);
+	  var html = "<table class='table table-bordered'>";
+	  
+	  html += "<tr>";
+	  html += "<td>번호</td>";
+	  html += "<td>아이디</td>";
+	  html += "<td>비밀번호</td>";
+	  html += "<td>이름</td>";
+	  html += "<td>나이</td>";
+	  html += "<td>이메일</td>";
+	  html += "<td>전화번호</td>";
+	  html += "</tr>";
+	  
+	  $.each(data, function(index, obj){
+		  html += "<tr>";
+		  html += "<td>"+obj.num+"</td>";
+		  html += "<td>"+obj.id+"</td>";
+		  html += "<td>"+obj.pass+"</td>";
+		  html += "<td>"+obj.name+"</td>";
+		  html += "<td>"+obj.age+"</td>";
+		  html += "<td>"+obj.email+"</td>";
+		  html += "<td>"+obj.phone+"</td>";
+		  html += "</tr>";
+	  });
+	  
+	  html += "</table>";
+	  
+	  $("#list").html(html);
+  }
+  
 </script>
 </head>
 <body>
-[MVC04 예제 - FrontController+POJO]
+[ SPRING WEB MVC 02버전 ]
 <table class="table table-bordered">
   <tr>
     <td>번호</td>
@@ -50,6 +93,16 @@
   <tr>
   <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'"/></td>
   </tr>
+  
+  <tr>
+  	<td colspan="8">
+  		<input type="button" value="ajax로 회원 리스트 보기" onclick="btnClick()"/>
+  	</td>
+  </tr>
+  
 </table>
+
+<div id="list">회원리스트 출력하기</div>
+
 </body>
 </html>
