@@ -82,4 +82,10 @@ public class MemberController {
 		return list;	// Object -> JSON : @ResponseBody -> API : (jackson-databind / jackson-mapper-asl) 2개 필요함.
 	}
 	
+	@RequestMapping("/form.do")
+	public String form() {
+		
+		return "uploadForm";
+	}
+	
 }
