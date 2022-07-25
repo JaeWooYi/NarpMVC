@@ -7,8 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<link rel='stylesheet'
-	href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
 <script	src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
 <script	src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
 
@@ -29,7 +28,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">스프링을 이용한 다중 파일 업로드 구현</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action="<c:url value='/upload.do'/>" enctype="mulitpart/form-data" method="post">
+				<form class="form-horizontal" action="<c:url value='/upload.do'/>" enctype="multipart/form-data" method="post">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="id">ID : </label>
 						<div class="col-sm-10">
@@ -39,7 +38,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="name">NAME : </label>
 						<div class="col-sm-10">
-							<input type="password" class="form-control" id="name" name="name" placeholder="Enter name" style="width:30%">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" style="width:30%">
 						</div>
 					</div>
 					<div class="form-group">
