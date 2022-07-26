@@ -28,6 +28,7 @@
 	    <property name="locations" value="/WEB-INF/mybatis/db.properties"/>
 	</bean>
 	
+	<context:component-scan base-package="kr.inflearn.service" />
 	<mybatis-spring:scan base-package="kr.inflearn.mapper" />
 		
 </beans>
