@@ -10,20 +10,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="boardVO">
-		insert into
-		(
-		title
-		, contents
-		, count
-		, writer
-		)
-		values
-		(
-		#{title}
-		, #{contents}
-		, #{count}
-		, #{writer}
-		)
+		insert into tb_board(title, contents, count, writer)
+		values(#{title}, #{contents}, #{count}, #{writer})
 	</insert>
 	
 	<select id="read" parameterType="integer" resultType="boardVO">
