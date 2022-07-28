@@ -6,7 +6,7 @@
 
 <!-- 원래대로라면 resultType이 kr.inflearn.model.BoardVO여야 하지만 typeAlias에서 boardVO로 바꿀거야 -->
 	<select id="getList" resultType="boardVO">
-		select * from tb_board
+		select * from tb_board order by idx desc
 	</select>
 	
 	<insert id="insert" parameterType="boardVO">
@@ -27,7 +27,11 @@
 		title=#{title}
 		, contents=#{contents}
 		where
-		idx=#{idx} 
+		idx=#{idx}
+	</update>
+	
+	<update id="count" parameterType="Integer">
+		update tb_board set count = count+1 where idx=#{idx}
 	</update>
 
 </mapper>

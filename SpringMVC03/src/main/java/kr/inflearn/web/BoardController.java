@@ -45,9 +45,30 @@ public class BoardController {
 	
 	@RequestMapping("/get.do")
 	public String get(@RequestParam("bno") int bno, Model model) {
-		BoardVO board = service.get(bno);
+		BoardVO board = service.get(bno, "get");
 		model.addAttribute("board", board);
 		return "get";	// get.jsp
+	}
+	
+	// 수정페이지 가기
+	@RequestMapping(value="/modify.do", method=RequestMethod.GET)
+	public String modifyGET(@RequestParam("bno") int bno, Model model) {
+		BoardVO board = service.get(bno, "modify");
+		model.addAttribute("board", board);
+		return "modify";	// modify.jsp
+	}
+	
+	// 수정하기
+	@RequestMapping(value="/modify.do", method=RequestMethod.POST)
+	public String modifyPOST(BoardVO boardVO) {
+		service.modify(boardVO);
+		return "redirect:/list.do";	// modify.jsp
+	}
+	
+	@RequestMapping("/remove.do")
+	public String remove(@RequestParam("bno") int bno) {
+		service.remove(bno);
+		return "redirect:/list.do";
 	}
 	
 }

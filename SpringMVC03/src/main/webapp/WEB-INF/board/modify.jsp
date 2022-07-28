@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Board Detail</title>
+  <title>게시물 등록 화면</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,50 +12,52 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
-  $(document).ready(()=>{
-	 $("#list").click(()=>{
-		 location.href="<c:url value='/list.do' />"
-	 });
-	 
-	 $("#modify").click(()=>{
-		 var idx = $('#idx').val();
-		 /* alert(idx); */
-		 location.href="<c:url value='/modify.do' />?bno=${board.idx}";	// get방식
-	 });
+  $(document).ready(function(){
+	  $("#list").click(function(){
+		  location.href = "<c:url value='/list.do' />";
+	  });
+	  
+	  $("#remove").click(function(){
+		  location.href = "<c:url value='/remove.do' />?bno=${board.idx}";
+	  });
   });
-  </script> 
+  </script>
   
 </head>
 <body>
-
+ 
 <div class="container">
-  <h2>Board Read</h2>
+  <h2>Board Modify Page</h2>
   <div class="panel panel-default">
-    <div class="panel-heading">Board Read Page</div>
+    <div class="panel-heading">Board Modify Page</div>
     <div class="panel-body">
     
-      <div class="form-group">
+    <form action="<c:url value='/modify.do' />" method="post">
+	  
+	  <div class="form-group">
 	    <label>Bno</label>
 	    <input type="text" class="form-control" id="idx" name="idx" value="${board.idx}" readonly="readonly">
 	  </div>
-      <div class="form-group">
+	  
+	  <div class="form-group">
 	    <label>Title</label>
-	    <input type="text" class="form-control" name="title" value="${board.title}" readonly="readonly">
+	    <input type="text" class="form-control" id="title" name="title" value="${board.title}">
 	  </div>
 	  <div class="form-group">
 	    <label>Text area</label>
-	    <textarea class="form-control" rows="3" name="contents" readonly="readonly">${board.contents}</textarea>
+	    <textarea class="form-control" rows="3" name="contents">${board.contents}</textarea>
 	  </div>
 	  <div class="form-group">
 	    <label>Writer</label>
-	    <input type="text" class="form-control" name="writer" value="${board.writer}" readonly="readonly">
+	    <input type="text" class="form-control" id="writer" name="writer" value="${board.writer}" readonly="readonly">
 	  </div>
-	  
-	  <button type="button" id="modify" class="btn btn-default">Modify</button>
-	  <button type="button" id="list" class="btn btn-info">List</button>
+	  <button type="submit" class="btn btn-primary">수정</button>
+	  <button id="remove" type="button" class="btn btn-danger">삭제</button>
+	  <button id="list" type="button" class="btn btn-info">취소(리스트로)</button>
+	</form>
     
     </div>
-    <div class="panel-footer">Good Detail</div>
+    <div class="panel-footer">Good Board Modify</div>
   </div>
 </div>
 

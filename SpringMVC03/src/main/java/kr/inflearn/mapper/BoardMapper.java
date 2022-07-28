@@ -25,4 +25,7 @@ public int delete(int bno);
 // 게시물 수정
 public int update(BoardVO boardVO);
 
+// 게시물 조회수
+public void count(int bno);
+
 }

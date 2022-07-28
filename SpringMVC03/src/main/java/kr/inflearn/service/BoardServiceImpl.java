@@ -25,7 +25,10 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public BoardVO get(int bno) {
+	public BoardVO get(int bno, String mode) {
+		if(mode.equals("get")) {
+			mapper.count(bno);
+		}
 		return mapper.read(bno);
 	}
 
